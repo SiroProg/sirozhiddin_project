@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sirozhiddin_project/src/common/provider/app_provider.dart';
 import 'package:sirozhiddin_project/src/common/style/app_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../register_screen/register_screen.dart';
 
 class CustomSplashScreen extends ConsumerStatefulWidget {
   const CustomSplashScreen({super.key});
@@ -11,18 +14,15 @@ class CustomSplashScreen extends ConsumerStatefulWidget {
 }
 
 class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
-  late final PageController pageController;
-  int currentPage = 0;
-
   void initState() {
     super.initState();
-    pageController = PageController();
+    ref.read(appProvider).pageController = PageController();
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    pageController.dispose();
+    ref.read(appProvider).pageController.dispose();
   }
 
   @override
@@ -32,8 +32,8 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
         child: Stack(
           children: [
             PageView(
-              controller: pageController,
-              children: [
+              controller: ref.watch(appProvider).pageController,
+              children: const [
                 SplashScreenWidget(
                   image: "assets/images/Splash2-1.png",
                   title: "Premium Food\nAt Your Doorstep",
@@ -62,7 +62,7 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
                   height: MediaQuery.of(context).size.height / 1.2,
                 ),
                 SmoothPageIndicator(
-                  controller: pageController,
+                  controller: ref.watch(appProvider).pageController,
                   count: 3,
                   effect: WormEffect(
                     activeDotColor: AppColors.green,
@@ -80,16 +80,38 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.green,
-                        shape: ContinuousRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                        shape: const ContinuousRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        ),
                       ),
                       onPressed: () {
-
+                        if (ref.watch(appProvider).initialSplashPage.value %
+                                3 ==
+                            0) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RegisterScreen(),
+                            ),
+                          );
+                        } else {
+                          ref.read(appProvider).pageController.nextPage(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.easeIn);
+                          ref.read(appProvider).initialSplashPage.value++;
+                        }
                       },
-                      child: Text(
-                        "Get started",
-                        style: TextStyle(color: AppColors.white),
+                      child: ValueListenableBuilder(
+                        valueListenable:
+                            ref.watch(appProvider).initialSplashPage,
+                        builder: (ctx, value, child) {
+                          return Text(
+                            value % 3 == 0 ? "Get started" : "Next",
+                            style: TextStyle(color: AppColors.white),
+                          );
+                        },
                       ),
                     ),
                   ),

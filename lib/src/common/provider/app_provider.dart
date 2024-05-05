@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // class ClientStateNotifier extends StateNotifier<ProviderModel> {
@@ -216,10 +217,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //   }
 // }
 
+final appProvider = StateProvider<ProviderModel>((ref) => ProviderModel());
+
 class ProviderModel extends ChangeNotifier {
-
+  late final PageController pageController;
+  ValueNotifier<int> initialSplashPage = ValueNotifier(1);
 }
-
-final appProvider = ChangeNotifierProvider<ProviderModel>(
-  (ref) => ProviderModel(),
-);
