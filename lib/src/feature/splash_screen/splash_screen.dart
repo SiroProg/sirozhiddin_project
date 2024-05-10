@@ -32,6 +32,9 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
         child: Stack(
           children: [
             PageView(
+              onPageChanged: (value) {
+                ref.read(appProvider).initialSplashPage.value = value;
+              },
               controller: ref.watch(appProvider).pageController,
               children: const [
                 SplashScreenWidget(
@@ -87,9 +90,8 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
                         ),
                       ),
                       onPressed: () {
-                        if (ref.watch(appProvider).initialSplashPage.value %
-                                3 ==
-                            0) {
+                        if (ref.watch(appProvider).initialSplashPage.value ==
+                            2) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -100,7 +102,6 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
                           ref.read(appProvider).pageController.nextPage(
                               duration: Duration(milliseconds: 500),
                               curve: Curves.easeIn);
-                          ref.read(appProvider).initialSplashPage.value++;
                         }
                       },
                       child: ValueListenableBuilder(
@@ -108,7 +109,7 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
                             ref.watch(appProvider).initialSplashPage,
                         builder: (ctx, value, child) {
                           return Text(
-                            value % 3 == 0 ? "Get started" : "Next",
+                            value == 2 ? "Get started" : "Next",
                             style: TextStyle(color: AppColors.white),
                           );
                         },

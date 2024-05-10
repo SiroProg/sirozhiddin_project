@@ -222,4 +222,5 @@ final appProvider = StateProvider<ProviderModel>((ref) => ProviderModel());
 class ProviderModel extends ChangeNotifier {
   late final PageController pageController;
   ValueNotifier<int> initialSplashPage = ValueNotifier(1);
+  ValueNotifier<bool> secureText = ValueNotifier(true);
 }
