@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sirozhiddin_project/src/common/provider/app_provider.dart';
 import 'package:sirozhiddin_project/src/common/style/app_colors.dart';
 
-class SignIn extends ConsumerStatefulWidget {
-  const SignIn({super.key});
+class SignUp extends ConsumerStatefulWidget {
+  const SignUp({super.key});
 
   @override
-  ConsumerState<SignIn> createState() => _SignInState();
+  ConsumerState<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends ConsumerState<SignIn> {
+class _SignUpState extends ConsumerState<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,12 +22,12 @@ class _SignInState extends ConsumerState<SignIn> {
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
             image: const AssetImage(
-              "assets/images/welcome2.png",
+              "assets/images/welcome3.png",
             ),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 600,
+            width: MediaQuery.of(context).size.width.w,
+            height: 600.h,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -51,108 +52,147 @@ class _SignInState extends ConsumerState<SignIn> {
                     ),
                     Text(
                       'Welcome',
-                      style: TextStyle(color: AppColors.white, fontSize: 18),
+                      style: TextStyle(color: AppColors.white, fontSize: 18.sp),
                     ),
-                    const SizedBox(
-                      width: 50,
-                    ),
+                    50.horizontalSpace,
                   ],
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 380,
+                  width: MediaQuery.of(context).size.width.w,
+                  height: 450.h,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: AppColors.white60,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
-                      ),
+                      ).w,
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 30),
+                              horizontal: 20, vertical: 30)
+                          .r,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Welcome back !",
+                            "Create account",
                             style: TextStyle(
                               color: AppColors.black,
-                              fontSize: 25,
+                              fontSize: 25.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 30),
+                            padding: const EdgeInsets.only(right: 30).r,
                             child: Text(
-                              "Sign in to your account",
+                              "Quickly create account",
                               style: TextStyle(
                                 color: AppColors.black10,
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 30),
+                            padding: const EdgeInsets.only(top: 30).r,
                             child: SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                height: 60,
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.white,
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(10),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.email_outlined,
-                                          color: AppColors.black10,
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        const SizedBox(
-                                          width: 240,
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: "Email Address",
-                                              border: InputBorder.none,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: 60,
+                              width: MediaQuery.of(context).size.width.w,
+                              height: 60.h,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
                                   color: AppColors.white,
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(10),
+                                  ).w,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                  ).r,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.email_outlined,
+                                        color: AppColors.black10,
+                                      ),
+                                      20.horizontalSpace,
+                                      SizedBox(
+                                        width: 240.w,
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                            hintText: "Email Address",
+                                            border: InputBorder.none,
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10).r,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width.w,
+                              height: 60.h,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10),
+                                  ).w,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                     left: 20,
                                     right: 10,
+                                  ).r,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.phone_outlined,
+                                        color: AppColors.black10,
+                                      ),
+                                      20.horizontalSpace,
+                                      SizedBox(
+                                        width: 290.w,
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                            hintText: "Phone number",
+                                            border: InputBorder.none,
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10).r,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width.w,
+                              height: 60.h,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10),
+                                  ).w,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 20,
+                                    right: 10,
+                                  ).r,
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -161,11 +201,9 @@ class _SignInState extends ConsumerState<SignIn> {
                                         Icons.lock_outline,
                                         color: AppColors.black10,
                                       ),
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
+                                      20.horizontalSpace,
                                       SizedBox(
-                                        width: 290,
+                                        width: 290.w,
                                         child: ValueListenableBuilder(
                                           valueListenable:
                                               ref.read(appProvider).secureText,
@@ -208,40 +246,24 @@ class _SignInState extends ConsumerState<SignIn> {
                               ),
                             ),
                           ),
+                          10.verticalSpace,
                           SizedBox(
-                            height: 10,
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              "Forgot password",
-                              style: TextStyle(
-                                color: AppColors.blueGrey,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: 60,
+                            width: MediaQuery.of(context).size.width.w,
+                            height: 60.h,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.green,
                                 shadowColor: AppColors.white,
-                                shape: const ContinuousRectangleBorder(
+                                shape: ContinuousRectangleBorder(
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(10),
-                                  ),
+                                  ).w,
                                 ),
                               ),
                               onPressed: () {},
                               child: Center(
                                 child: Text(
-                                  "Sign in",
+                                  "Signup",
                                   style: TextStyle(
                                     color: AppColors.white,
                                     fontSize: 15,
