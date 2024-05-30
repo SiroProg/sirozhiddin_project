@@ -39,56 +39,56 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // floatingActionButton: FloatingActionButton(
-        //   backgroundColor: AppColors.orange,
-        //   child: Icon(
-        //     Icons.shopping_bag_outlined,
-        //     color: AppColors.white,
-        //     size: 27,
-        //   ),
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.all(
-        //       Radius.circular(
-        //         50,
-        //       ),
-        //     ),
-        //   ),
-        //   onPressed: () {},
-        //   //params
-        // ),
-        // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        // bottomNavigationBar: AnimatedBottomNavigationBar(
-        //     activeColor: AppColors.black,
-        //     inactiveColor: AppColors.black10,
-        //     iconSize: 27,
-        //     icons: [
-        //       Icons.home_outlined,
-        //       Icons.person_2_outlined,
-        //       Icons.favorite_outline,
-        //     ],
-        //     activeIndex: 0,
-        //     gapLocation: GapLocation.end,
-        //     notchSmoothness: NotchSmoothness.softEdge,
-        //     onTap: (index) {
-        //       // controller.animateToPage(index,
-        //       //     duration: Duration(milliseconds: 500),
-        //       //     curve: Curves.decelerate);
-        //     }
-        //     //other params
-        //     ),
-        // backgroundColor: AppColors.white,
-        // body: SafeArea(
-        //   child: SizedBox(
-        //     width: double.infinity,
-        //     child: PageView(
-        //       onPageChanged: (value) {},
-        //       // controller: controller,
-        //       allowImplicitScrolling: true,
-        //       children: pages,
-        //     ),
-        //   ),
-        // ),
-        );
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.orange,
+        child: Icon(
+          Icons.shopping_bag_outlined,
+          color: AppColors.white,
+          size: 27,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              50,
+            ),
+          ),
+        ),
+        onPressed: () {},
+        //params
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+          activeColor: AppColors.black,
+          inactiveColor: AppColors.black10,
+          iconSize: 27,
+          icons: [
+            Icons.home_outlined,
+            Icons.person_2_outlined,
+            Icons.favorite_outline,
+          ],
+          activeIndex: 0,
+          gapLocation: GapLocation.end,
+          notchSmoothness: NotchSmoothness.softEdge,
+          onTap: (index) {
+            // controller.animateToPage(index,
+            //     duration: Duration(milliseconds: 500),
+            //     curve: Curves.decelerate);
+          }
+          //other params
+          ),
+      backgroundColor: AppColors.white,
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: PageView(
+            onPageChanged: (value) {},
+            // controller: controller,
+            allowImplicitScrolling: true,
+            children: pages,
+          ),
+        ),
+      ),
+    );
   }
 }
 
