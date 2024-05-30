@@ -19,14 +19,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: Stack(
         children: [
           Image(
-            width: MediaQuery.of(context).size.width.w,
+            width: double.infinity,
             fit: BoxFit.cover,
             image: const AssetImage(
               "assets/images/welcom1.png",
             ),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width.w,
+            width: double.infinity,
             height: 600.h,
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -59,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width.w,
+                  width: double.infinity,
                   height: 300.h,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
@@ -98,14 +98,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               top: 20,
                             ).r,
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width.w,
+                              width: double.infinity,
                               height: 60.h,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.white,
                                   shadowColor: AppColors.white,
                                   shape: ContinuousRectangleBorder(
-                                    borderRadius: BorderRadius.all(
+                                    borderRadius: const BorderRadius.all(
                                       Radius.circular(10),
                                     ).w,
                                   ),
@@ -114,7 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => SignIn(),
+                                      builder: (context) => const SignIn(),
                                     ),
                                   );
                                 },
@@ -134,14 +134,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10).r,
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width.w,
+                              width: double.infinity,
                               height: 60.h,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.green,
+                                  backgroundColor: AppColors.orange,
                                   shadowColor: AppColors.white,
                                   shape: ContinuousRectangleBorder(
-                                    borderRadius: BorderRadius.all(
+                                    borderRadius: const BorderRadius.all(
                                       Radius.circular(10),
                                     ).w,
                                   ),
@@ -150,12 +150,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => SignUp(),
+                                      builder: (context) => const SignUp(),
                                     ),
                                   );
                                 },
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Icon(
@@ -163,11 +163,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       color: AppColors.white,
                                       size: 25.w,
                                     ),
-                                    SizedBox(
-                                      width:
-                                          (MediaQuery.of(context).size.width /
-                                                  5.5)
-                                              .w,
+                                    Spacer(
+                                      flex: 2,
                                     ),
                                     Text(
                                       "Create an account",
@@ -176,6 +173,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         fontSize: 15.sp,
                                       ),
                                     ),
+                                    Spacer(
+                                      flex: 2,
+                                    ),
+                                    SizedBox(
+                                      width: 25.w,
+                                    )
                                   ],
                                 ),
                               ),

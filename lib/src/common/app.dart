@@ -19,7 +19,7 @@ class App extends StatelessWidget {
           home: child,
         );
       },
-      child: CustomSplashScreen(),
+      child: const CustomSplashScreen(),
     );
   }
 }

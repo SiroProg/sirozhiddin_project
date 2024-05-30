@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sirozhiddin_project/src/common/provider/app_provider.dart';
 import 'package:sirozhiddin_project/src/common/style/app_colors.dart';
+import 'package:sirozhiddin_project/src/feature/home_screen/home_screen.dart';
+import 'package:sirozhiddin_project/src/feature/register_screen/sign_in_sqreen.dart';
 
 class SignUp extends ConsumerStatefulWidget {
   const SignUp({super.key});
@@ -26,7 +27,7 @@ class _SignUpState extends ConsumerState<SignUp> {
             ),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width.w,
+            width: double.infinity,
             height: 600.h,
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -59,7 +60,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width.w,
+                  width: double.infinity,
                   height: 450.h,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
@@ -98,7 +99,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                           Padding(
                             padding: const EdgeInsets.only(top: 30).r,
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width.w,
+                              width: double.infinity,
                               height: 60.h,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
@@ -122,7 +123,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                                       20.horizontalSpace,
                                       SizedBox(
                                         width: 240.w,
-                                        child: TextField(
+                                        child: const TextField(
                                           decoration: InputDecoration(
                                             hintText: "Email Address",
                                             border: InputBorder.none,
@@ -138,7 +139,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10).r,
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width.w,
+                              width: double.infinity,
                               height: 60.h,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
@@ -163,7 +164,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                                       20.horizontalSpace,
                                       SizedBox(
                                         width: 290.w,
-                                        child: TextField(
+                                        child: const TextField(
                                           decoration: InputDecoration(
                                             hintText: "Phone number",
                                             border: InputBorder.none,
@@ -179,7 +180,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10).r,
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width.w,
+                              width: double.infinity,
                               height: 60.h,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
@@ -248,19 +249,26 @@ class _SignUpState extends ConsumerState<SignUp> {
                           ),
                           10.verticalSpace,
                           SizedBox(
-                            width: MediaQuery.of(context).size.width.w,
+                            width: double.infinity,
                             height: 60.h,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.green,
+                                backgroundColor: AppColors.orange,
                                 shadowColor: AppColors.white,
                                 shape: ContinuousRectangleBorder(
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                     Radius.circular(10),
                                   ).w,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
+                                );
+                              },
                               child: Center(
                                 child: Text(
                                   "Signup",
@@ -272,6 +280,37 @@ class _SignUpState extends ConsumerState<SignUp> {
                                 ),
                               ),
                             ),
+                          ),
+                          10.verticalSpace,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Already have an account ? ",
+                                style: TextStyle(
+                                  color: AppColors.black10,
+                                  fontSize: 15.sp,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignIn(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    color: AppColors.black,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

@@ -15,6 +15,7 @@ class CustomSplashScreen extends ConsumerStatefulWidget {
 }
 
 class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
+  @override
   void initState() {
     super.initState();
     ref.read(appProvider).pageController = PageController();
@@ -61,30 +62,33 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Spacer(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width.w,
-                  height: (MediaQuery.of(context).size.height / 1.2).h,
+                  width: double.infinity,
+                  // height: (MediaQuery.of(context).size.height / 1.2).h,
                 ),
                 SmoothPageIndicator(
                   controller: ref.watch(appProvider).pageController,
                   count: 3,
                   effect: WormEffect(
-                    activeDotColor: AppColors.green,
+                    activeDotColor: AppColors.orange,
                     dotHeight: 10.h,
                     dotWidth: 10.w,
                     type: WormType.thin,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20).w,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20)
+                          .w,
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width.w,
+                    width: double.infinity,
                     height: 50.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.green,
+                        backgroundColor: AppColors.orange,
                         shape: ContinuousRectangleBorder(
-                          borderRadius: BorderRadius.all(
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(20),
                           ).w,
                         ),
@@ -95,12 +99,12 @@ class _CustomSplashScreenState extends ConsumerState<CustomSplashScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegisterScreen(),
+                              builder: (context) => const RegisterScreen(),
                             ),
                           );
                         } else {
                           ref.read(appProvider).pageController.nextPage(
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               curve: Curves.easeIn);
                         }
                       },
@@ -143,7 +147,7 @@ class SplashScreenWidget extends StatelessWidget {
     return Stack(
       children: [
         Image(
-          width: MediaQuery.of(context).size.width.w,
+          width: double.infinity,
           height: MediaQuery.of(context).size.height.h,
           image: AssetImage(image),
           fit: BoxFit.cover,
@@ -152,7 +156,7 @@ class SplashScreenWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width.w,
+              width: double.infinity,
               height: (MediaQuery.of(context).size.height / 1.7).h,
             ),
             Text(

@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sirozhiddin_project/src/common/provider/app_provider.dart';
 import 'package:sirozhiddin_project/src/common/style/app_colors.dart';
+import 'package:sirozhiddin_project/src/feature/register_screen/sign_up_screen.dart';
+
+import '../home_screen/home_screen.dart';
 
 class SignIn extends ConsumerStatefulWidget {
   const SignIn({super.key});
@@ -26,7 +28,7 @@ class _SignInState extends ConsumerState<SignIn> {
             ),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width.w,
+            width: double.infinity,
             height: 600.h,
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -59,7 +61,7 @@ class _SignInState extends ConsumerState<SignIn> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width.w,
+                  width: double.infinity,
                   height: 410.h,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
@@ -98,7 +100,7 @@ class _SignInState extends ConsumerState<SignIn> {
                           Padding(
                             padding: const EdgeInsets.only(top: 30).w,
                             child: SizedBox(
-                                width: MediaQuery.of(context).size.width.w,
+                                width: double.infinity,
                                 height: 60.h,
                                 child: DecoratedBox(
                                   decoration: BoxDecoration(
@@ -122,7 +124,7 @@ class _SignInState extends ConsumerState<SignIn> {
                                         20.horizontalSpace,
                                         SizedBox(
                                           width: 240.w,
-                                          child: TextField(
+                                          child: const TextField(
                                             decoration: InputDecoration(
                                               hintText: "Email Address",
                                               border: InputBorder.none,
@@ -137,7 +139,7 @@ class _SignInState extends ConsumerState<SignIn> {
                           Padding(
                             padding: const EdgeInsets.only(top: 10).r,
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width.w,
+                              width: double.infinity,
                               height: 60.h,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
@@ -218,19 +220,26 @@ class _SignInState extends ConsumerState<SignIn> {
                           ),
                           10.verticalSpace,
                           SizedBox(
-                            width: MediaQuery.of(context).size.width.w,
+                            width: double.infinity,
                             height: 60.h,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.green,
+                                backgroundColor: AppColors.orange,
                                 shadowColor: AppColors.white,
                                 shape: ContinuousRectangleBorder(
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                     Radius.circular(10),
                                   ).w,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
+                                );
+                              },
                               child: Center(
                                 child: Text(
                                   "Sign in",
@@ -245,12 +254,31 @@ class _SignInState extends ConsumerState<SignIn> {
                           ),
                           10.verticalSpace,
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 "Don’t have an account ? ",
                                 style: TextStyle(
                                   color: AppColors.black10,
                                   fontSize: 15.sp,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignUp(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Sign up",
+                                  style: TextStyle(
+                                    color: AppColors.black,
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
